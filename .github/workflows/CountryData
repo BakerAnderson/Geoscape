@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Country : MonoBehaviour
+{
+    public float realCountryX;
+    public float realCountryY;
+    public List<string> facts = new List<string>();
+    public Collider2D collider;
+    public bool selected;
+    public Color selectedColor;
+    public Color defaultColor;
+    public Color correctColor;
+    public SpriteRenderer sr;
+    public GameLoop gl;
+    public string name;
+
+    void Start()
+    {
+        sr = gameObject.GetComponent<SpriteRenderer>(); 
+        sr.color = defaultColor;
+    }
+    
+    void Update () 
+    {
+        
+    }
+
+    void OnMouseDown()
+    {
+        if (gl.selectable)
+        {
+            gl.GuessCountry(this);
+        }
+    }
+
+    public void Reset()
+    {
+        sr.color = defaultColor;
+    }
+
+    public void TurnGreen()
+    {
+        sr.sortingOrder = 1;
+        sr.color = correctColor;
+    }
+
+    public void TurnSelectedColor()
+    {
+        sr.sortingOrder = 1;
+        sr.color = selectedColor;
+    }
+}
