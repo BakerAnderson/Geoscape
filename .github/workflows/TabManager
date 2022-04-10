@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class TabHandler : MonoBehaviour
+{
+
+    public Button selected;
+
+    public Button firstFact;
+    public bool firstFactAvailable;
+    public Button secondFact;
+    public bool secondFactAvailable;
+    public Button thirdFact;
+    public bool thirdFactAvailable;
+    public Button fourthFact;
+    public bool fourthFactAvailable;
+    public Button fifthFact;
+    public bool fifthFactAvailable;
+
+    public GameLoop gl;
+
+    public TextMeshProUGUI tmp;
+
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        firstFact.selectable = gl.guessesCounter <= 5;
+        secondFact.selectable = gl.guessesCounter <= 4;
+        thirdFact.selectable = gl.guessesCounter <= 3;
+        fourthFact.selectable = gl.guessesCounter <= 2;
+        fifthFact.selectable = gl.guessesCounter <= 1;
+
+        tmp.SetText(selected.fact);
+    }
+
+    public void resetColors()
+    {
+        firstFact.im.color = firstFact.defaultColor;
+        secondFact.im.color = secondFact.defaultColor;
+        thirdFact.im.color = thirdFact.defaultColor;
+        fourthFact.im.color = fourthFact.defaultColor;
+        fifthFact.im.color = fifthFact.defaultColor;
+    }
+}
